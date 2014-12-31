@@ -6,7 +6,7 @@ Dispatcher.GetInternalDispatcher = function(inObj)
 Dispatcher.SetInternalDispatcher = function(inObj)
 {
 	inObj._Dispatcher = {};
-	return inObj._Dispatcher();
+	return inObj._Dispatcher;
 };
 Dispatcher.Create = function(inObj)
 {
