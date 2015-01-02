@@ -17,8 +17,10 @@ Dispatcher.Listen = function(inObj, inType, inHandler)
 	var dispatcher = Dispatcher.GetInternalDispatcher(inObj);
 	var type = dispatcher[inType];
 	if(type === undefined)
-		dispatcher[inType] = [];
-		
+	{
+		type = [];
+		dispatcher[inType] = type;
+	}
 	type.push(inHandler);	
 };
 Dispatcher.Unlisten = function(inObj, inType, inHandler)
@@ -34,6 +36,10 @@ Dispatcher.Unlisten = function(inObj, inType, inHandler)
 		if(type[i] == inHandler)
 		{
 			type.splice(i, 1);
+			
+			if(type.length == 0)
+				delete dispatcher[inType];
+				
 			return;
 		}
 	}
